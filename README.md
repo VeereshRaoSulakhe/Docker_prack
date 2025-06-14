@@ -1,5 +1,54 @@
 # Docker_prack
 This is the repo setup for the handy information on Docker images and setup instructions
+
+sudo apt update && apt install -y unzip jq net -tools
+apt install openjdk-17-jdk -y
+apt install maven -y && curl https://get.docker.com |bash
+useradd -G docker dockeruser
+usermod -aG docker ubuntu
+usermod -aG docker ec2-user
+------------------------------------------------------
+#aws cli installation
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+#azure cli installation
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+------------------------------------------------------
+#terraform installation on Ubuntu
+Step 1: Update System Packages
+Ensure your system is up to date:
+sudo apt update && sudo apt upgrade -y
+
+
+Step 2: Install Required Dependencies
+Terraform requires some dependencies for installation:
+sudo apt install -y gnupg software-properties-common curl
+
+
+Step 3: Add HashiCorp Repository
+HashiCorp provides an official repository for Terraform:
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+
+Step 4: Install Terraform
+Now, install Terraform using apt:
+sudo apt update
+sudo apt install terraform -y
+
+
+Step 5: Verify Installation
+Check if Terraform is installed correctly:
+terraform -version
+
+
+This should display the installed Terraform version.
+Step 6: Enable Auto-Completion (Optional)
+To enable Terraform command auto-completion:
+terraform -install-autocomplete
+
+
 -----------------------------------------
 docker create <image>:tag  ->For creating a image
 docker pull ngnix <tag like latest or specific version>
