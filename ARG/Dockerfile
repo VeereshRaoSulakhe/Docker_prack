@@ -1,3 +1,3 @@
 ARG version
 FROM almalinux:${version}
-RUN cat /etc/*release
+RUN dnf install nginx -y
